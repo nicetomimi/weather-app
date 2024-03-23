@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WeatherBox from "./component/WeatherBox";
@@ -12,7 +12,7 @@ import WeatherButton from "./component/WeatherButton";
 
 function App() {
   //5. 가져온 데이터를 넣어주는 작업. useState 만들어주기.
-  const [weather, setWeather] = useState(null)  
+  const [weather, setWeather] = useState(null);
   //setWeather 는 API에서 data가져오는 부분에 data를 매개변수로 하는 함수로 넣어주고
   //weather는 props로 WeatherBox에 넣어준다.
 
