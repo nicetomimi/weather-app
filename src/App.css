@@ -17,10 +17,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* 컨테이너 자체의 높이가 작으므로 높이를 전체로 설정해야 화면 가운데로 옴! */
-  height: 100vh;
-  /* flex로 가로정렬이 기본세팅 되어있으므로 그걸 세로로 바꿔줘! */
-  flex-direction: column;
+  height: 100vh;  /* 컨테이너 자체의 높이가 작으므로 높이를 전체로 설정해야 화면 가운데로 옴! */
+  flex-direction: column;   /* flex로 가로정렬이 기본세팅 되어있으므로 그걸 세로로 바꿔줘! */
   text-align: center;
   opacity: 0.9;
   font-family: "Pretendard-Regular";
