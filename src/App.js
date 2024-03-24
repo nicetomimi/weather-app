@@ -12,6 +12,9 @@ import ClipLoader from "react-spinners/ClipLoader";
 //5. 로딩스피너
 
 function App() {
+  //에러
+  const [apiError, setAPIError] = useState("");
+
   //로딩스피너
   let [loading, setLoading] = useState(false);
 
@@ -29,14 +32,18 @@ function App() {
   //setCity는 WeatherButton에 넣어준다.
 
   const getWeatherByCity = async () => {
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=kr&appid=caef519f0e914db582c15f032b9ec408&units=metric`;
-    setLoading(true);
-    let response = await fetch(url);
-    let data = await response.json();
-    setWeather(data);
-    setLoading(false);
+    try {
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=kr&appid=caef519f0e914db582c15f032b9ec408&units=metric`;
+      setLoading(true);
+      let response = await fetch(url);
+      let data = await response.json();
+      setWeather(data);
+      setLoading(false);
+    } catch (err) {
+      setAPIError(err.message);
+      setLoading(false);
+    }
   };
-
 
   // useEffect(() => {
   //   getWeatherByCity()
@@ -46,8 +53,10 @@ function App() {
   //1."앱이 실행되자마자" lifecycle의 "useEffect"(react hook), 콜백함수와 어레이를 받는 함수, 여기서 현재위치 가져오는 getCurrentLocation 함수 만들어주고 2번으로
   useEffect(() => {
     if (city === "") {
+      setLoading(true);
       getCurrentLocation();
     } else {
+      setLoading(true);
       getWeatherByCity();
     }
   }, [city]);
@@ -64,14 +73,18 @@ function App() {
 
   //3. API 호출. 위치기반으로 날씨 가져와주는 함수 만들어주기.
   const getWeatherByCurrentLocation = async (lat, lon) => {
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&appid=caef519f0e914db582c15f032b9ec408&units=metric`;
-    setLoading(true);
-    let response = await fetch(url);
-    let data = await response.json();
-    setWeather(data);
-    setLoading(false);
+    try {
+      let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&appid=caef519f0e914db582c15f032b9ec408&units=metric`;
+      setLoading(true);
+      let response = await fetch(url);
+      let data = await response.json();
+      setWeather(data);
+      setLoading(false);
+    } catch (err) {
+      setAPIError(err.message);
+      setLoading(false);
+    }
   };
-
 
   return (
     <div>
